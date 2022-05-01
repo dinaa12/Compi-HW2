@@ -10,7 +10,7 @@
     void yyerror(const char* msg);
 %}
 
-%token VOID INT BYTE B BOOL AUTO TRUE FALSE RETURN IF ELSE WHILE BREAK CONTINUE SC COMMA LPAREN RPAREN LBRACE RBRACE ID NUM STRING
+%token VOID INT BYTE B BOOL AUTO TRUE FALSE RETURN IF ELSE WHILE BREAK CONTINUE SC COMMA LPAREN LBRACE ID NUM STRING
 
 %right ASSIGN
 
@@ -21,10 +21,13 @@
 
 %left OR
 %left AND
-%right NOT
 
-// TODO: dangling-else
-// TODO: (){}
+%left RPAREN
+%left RBRACE
+
+%nonassoc ELSE
+
+%right NOT
 
 %%
 
