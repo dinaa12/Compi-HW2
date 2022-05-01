@@ -10,6 +10,7 @@
 %option yylineno
 %option noyywrap
 relop												(==|!=|<=|>=|<|>)
+whitespace											([\t\n\r ])
 
 %%
 
@@ -49,11 +50,12 @@ continue											return CONTINUE;
 
 [a-zA-Z][a-zA-Z0-9]*						        return ID;
 
-0 | [1-9][0-9]*         					        return NUM;
+0|[1-9][0-9]*         					            return NUM;
 \"([^\n\r\"\\]|\\[rnt"\\])+\"					    return STRING;
 
-\/\/[^\r\n]*[\r|\n|\r\n]?                             ; /* ignore comment */
+\/\/[^\r\n]*[\r|\n|\r\n]?                           ; /* ignore comment */
 
-.													{ output::errorLex(yylineno); exit(0); }
+{whitespace}										;
+.													{ printf(yytext); printf("   "); output::errorLex(yylineno); exit(0); }
 
 %%
