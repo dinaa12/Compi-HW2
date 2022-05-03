@@ -56,6 +56,6 @@ continue											return CONTINUE;
 \/\/[^\r\n]*[\r|\n|\r\n]?                           ; /* ignore comment */
 
 {whitespace}										;
-.													{ printf(yytext); printf("   "); output::errorLex(yylineno); exit(0); }
+.													{ output::errorLex(yylineno); exit(0); }
 
 %%
