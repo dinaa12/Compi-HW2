@@ -14,13 +14,13 @@
 
 %right ASSIGN
 
+%left OR
+%left AND
+
 %left RELOP
 
 %left BINOP_ADD BINOP_SUB
 %left BINOP_MUL BINOP_DIV
-
-%left OR
-%left AND
 
 %left RPAREN
 %left RBRACE
